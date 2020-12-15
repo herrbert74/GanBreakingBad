@@ -35,41 +35,11 @@ import javax.inject.Singleton
 @Suppress("unused")
 @InstallIn(SingletonComponent::class)
 class SingletonModule {
-    @Suppress("DEPRECATION")
-    @Provides
-    @Singleton
-    internal fun provideGanBbRetrofit(): Retrofit {
-        val logging = HttpLoggingInterceptor()
-        logging.level = HttpLoggingInterceptor.Level.BODY
 
-        val httpClient = OkHttpClient.Builder()
-
-        httpClient.addInterceptor(logging)
-        return Retrofit.Builder()//
-            .baseUrl(BuildConfig.GAN_BB_BASE_URL)//
-            .addConverterFactory(GsonConverterFactory.create())//
-            .client(httpClient.build())//
-            .build()
-    }
 
     @Provides
     @Singleton
-    internal fun provideGanBbService(retroFit: Retrofit): GanBbService {
-        return retroFit.create(GanBbService::class.java)
-    }
-
-    @Provides
-    @Singleton
-    fun provideGanBbRepository(
-        ganBbService: GanBbService,
-        database: DatabaseContract
-    ): GanBbRepositoryContract {
-        return GanBbRepository(ganBbService, database)
-    }
-
-    @Provides
-    @Singleton
-    fun provideLogoQuizNavigator(): GanBbNavigator {
+    fun provideGanBbNavigator(): GanBbNavigator {
         return GanBbNavigation()
     }
 
@@ -81,25 +51,6 @@ class SingletonModule {
         return StringResourceHelper(context)
     }
 
-    @Provides
-    @Singleton
-    internal fun provideDatabaseContract(database: Database): DatabaseContract {
-        return SqlDelightDatabase(database)
-    }
-
-    @Provides
-    @Singleton
-    internal fun provideDatabase(driver: AndroidSqliteDriver): Database {
-        return Database(driver)
-    }
-
-    @Provides
-    @Singleton
-    internal fun provideSqlDriver(
-        @ApplicationContext context: Context
-    ): AndroidSqliteDriver {
-        return AndroidSqliteDriver(Database.Schema, context, "Characters.db")
-    }
 
     @Provides
     @Singleton
@@ -108,17 +59,5 @@ class SingletonModule {
     ): ConnectivityManager {
         return context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
     }
-
-    @Provides
-    fun provideCharactersDtoMapper(): (List<CharacterDto>) -> List<Character> =
-        { list ->
-            mapNullInputList(list) { characterDto ->
-                mapCharacterDto(
-                    characterDto,
-                    ::mapOccupation,
-                    ::mapAppearance,
-                )
-            }
-        }
 
 }

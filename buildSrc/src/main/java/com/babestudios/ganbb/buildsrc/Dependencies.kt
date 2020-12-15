@@ -63,6 +63,7 @@ object Libs {
 		object Test {
 			private const val version = "1.3.0"
 			const val core = "androidx.test:core:$version"
+			const val coreKtx = "androidx.test:core-ktx:$version"
 			const val runner = "androidx.test:runner:$version"
 			const val rules = "androidx.test:rules:$version"
 
@@ -236,6 +237,7 @@ object Libs {
 		const val robolectric = "org.robolectric:robolectric:4.3.1"
 		//This is an alternative to Espresso IdlingResource
 		const val conditionWatcher = "com.azimolabs.conditionwatcher:conditionwatcher:0.2"
+		const val barista = "com.schibsted.spain:barista:3.7.0"
 	}
 
 	object Kotest {

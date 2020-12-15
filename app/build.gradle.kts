@@ -1,4 +1,5 @@
 import com.babestudios.ganbb.buildsrc.Libs
+import org.gradle.internal.impldep.org.junit.experimental.categories.Categories.CategoryFilter.exclude
 
 plugins {
     id("jacoco")
@@ -24,6 +25,7 @@ android {
         minSdkVersion(21)
         targetSdkVersion(30)
         consumerProguardFiles("consumer-rules.pro")
+        testInstrumentationRunner = "com.babestudios.ganbb.GanBbAndroidJUnitRunner"
     }
     buildTypes {
         all {
@@ -53,7 +55,8 @@ android {
     buildFeatures.viewBinding = true
 
     applicationVariants.all {
-        val isTest: Boolean = gradle.startParameter.taskNames.find { it.contains("test") || it.contains("Test") } != null
+        val isTest: Boolean =
+            gradle.startParameter.taskNames.find { it.contains("test") || it.contains("Test") } != null
         if (isTest) {
             apply(plugin = "kotlin-allopen")
             allOpen {
@@ -64,6 +67,17 @@ android {
 
     tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
         kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+}
+
+android {
+    sourceSets["test"].apply {
+        java.srcDirs("$projectDir/src/testShared/java")
+        resources.srcDirs("$projectDir/src/testShared/resources").includes.addAll(arrayOf("**/*.*"))
+    }
+    sourceSets["androidTest"].apply {
+        java.srcDirs("$projectDir/src/testShared/java")
+        resources.srcDirs("$projectDir/src/testShared/resources").includes.addAll(arrayOf("**/*.*"))
     }
 }
 
@@ -103,6 +117,8 @@ dependencies {
     kapt(Libs.Google.Dagger.Hilt.androidCompiler)
     kaptTest(Libs.Google.Dagger.Hilt.androidCompiler)
     kaptAndroidTest(Libs.Google.Dagger.Hilt.androidCompiler)
+    androidTestImplementation(Libs.Google.Dagger.Hilt.androidTesting)
+
     implementation(Libs.SquareUp.SqlDelight.driver)
 
     implementation(Libs.Views.Groupie.core)
@@ -126,6 +142,8 @@ dependencies {
     testImplementation(Libs.Kotlin.Coroutines.test)
     testImplementation(Libs.Kotest.assertions)
 
+    androidTestImplementation(Libs.AndroidX.Test.core)
+    androidTestImplementation(Libs.AndroidX.Test.coreKtx)
     androidTestImplementation(Libs.Test.mockKAndroidTest)
     androidTestImplementation(Libs.Test.conditionWatcher)
     androidTestImplementation(Libs.AndroidX.Test.Espresso.core)
@@ -135,6 +153,9 @@ dependencies {
     androidTestImplementation(Libs.Google.gson)
     androidTestImplementation(Libs.SquareUp.Retrofit2.retrofit)
     androidTestImplementation(Libs.SquareUp.Retrofit2.rxJava2Adapter)
+    androidTestImplementation(Libs.Test.barista) {
+        exclude(group = "org.jetbrains.kotlin")
+    }
 }
 repositories {
     mavenCentral()
