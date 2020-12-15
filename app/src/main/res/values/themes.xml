@@ -1,6 +1,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.GANBreakingBad" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -12,5 +14,17 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+    </style>
+
+
+    <style name="SearchViewTheme" parent="Widget.AppCompat.SearchView">
+        <item name="colorControlNormal">@color/translucentBlack</item>
+        <item name="android:maxWidth">9999dp</item>
+        <item name="closeIcon">@drawable/ic_close_black</item>
+    </style>
+
+    <style name="MyThemeOverlay.ActionBar" parent="ThemeOverlay.AppCompat">
+        <item name="android:homeAsUpIndicator">@drawable/ic_arrow_back_black</item>
+        <item name="searchViewStyle">@style/SearchViewTheme</item>
     </style>
 </resources>

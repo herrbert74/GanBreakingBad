@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<dimen name="textSizeH1">144sp</dimen>
+	<dimen name="textSizeH2">90sp</dimen>
+	<dimen name="textSizeH3">72sp</dimen>
+	<dimen name="textSizeH4">51sp</dimen>
+	<dimen name="textSizeH5">36sp</dimen>
+	<dimen name="textSizeH6">30sp</dimen>
+	<dimen name="textSubtitle1">24sp</dimen>
+	<dimen name="textSubtitle2">21sp</dimen>
+	<dimen name="textSizeBody1">24sp</dimen>
+	<dimen name="textSizeBody2">21sp</dimen>
+	<dimen name="textSizeCaption">18sp</dimen>
+	<dimen name="textSizeOverLine">15sp</dimen>
+</resources>

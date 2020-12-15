@@ -1,0 +1,182 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tbCharacterDetails"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextColor="@android:color/white" />
+
+    <ImageView
+        android:id="@+id/ivCharacterDetails"
+        android:layout_width="@dimen/avatarSizeLarge"
+        android:layout_height="@dimen/avatarSizeLarge"
+        android:layout_margin="@dimen/viewMargin"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tbCharacterDetails" />
+
+    <TextView
+        android:id="@+id/cpnCharacterDetailsName"
+        style="@style/Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/screenMargin"
+        android:layout_marginTop="@dimen/viewMargin"
+        android:layout_marginEnd="@dimen/viewMargin"
+        android:text="@string/characterDetailsName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivCharacterDetails" />
+
+    <TextView
+        android:id="@+id/cpnCharacterDetailsOccupation"
+        style="@style/Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/screenMargin"
+        android:layout_marginTop="@dimen/viewMargin"
+        android:layout_marginEnd="@dimen/viewMargin"
+        android:text="@string/characterDetailsOccupation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblCharacterDetailsName" />
+
+    <TextView
+        android:id="@+id/cpnCharacterDetailsStatus"
+        style="@style/Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/screenMargin"
+        android:layout_marginTop="@dimen/viewMargin"
+        android:layout_marginEnd="@dimen/viewMargin"
+        android:text="@string/characterDetailsStatus"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblCharacterDetailsOccupation" />
+
+    <TextView
+        android:id="@+id/cpnCharacterDetailsNickName"
+        style="@style/Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/screenMargin"
+        android:layout_marginTop="@dimen/viewMargin"
+        android:layout_marginEnd="@dimen/viewMargin"
+        android:text="@string/characterDetailsNickName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblCharacterDetailsStatus" />
+
+    <TextView
+        android:id="@+id/cpnCharacterDetailsAppearance"
+        style="@style/Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/screenMargin"
+        android:layout_marginTop="@dimen/viewMargin"
+        android:layout_marginEnd="@dimen/viewMargin"
+        android:text="@string/characterDetailsAppearance"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblCharacterDetailsNickname" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrierCharacterDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="end"
+        app:constraint_referenced_ids="cpnCharacterDetailsName,
+        cpnCharacterDetailsOccupation,
+        cpnCharacterDetailsNickName,
+        cpnCharacterDetailsStatus,
+        cpnCharacterDetailsAppearance" />
+
+    <TextView
+        android:id="@id/lblCharacterDetailsName"
+        style="@style/Text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMinTextSize="@dimen/textSizeCaption"
+        app:autoSizeMaxTextSize="@dimen/textSizeBody1"
+        android:layout_marginStart="@dimen/viewMarginSmall"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="@dimen/screenMargin"
+        app:layout_constraintTop_toTopOf="@id/cpnCharacterDetailsName"
+        app:layout_constraintStart_toStartOf="@id/barrierCharacterDetails"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:maxLines="2"
+        tools:text="Walter White" />
+
+    <TextView
+        android:id="@id/lblCharacterDetailsOccupation"
+        style="@style/Text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:autoSizeTextType="uniform"
+        android:layout_marginTop="0dp"
+        app:autoSizeMinTextSize="@dimen/textSizeCaption"
+        app:autoSizeMaxTextSize="@dimen/textSizeBody1"
+        android:layout_marginStart="@dimen/viewMarginSmall"
+        android:layout_marginEnd="@dimen/screenMargin"
+        app:layout_constraintTop_toTopOf="@id/cpnCharacterDetailsOccupation"
+        app:layout_constraintStart_toStartOf="@id/barrierCharacterDetails"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:maxLines="2"
+        tools:text="High School Chemistry Teacher, Meth King Pin" />
+
+    <TextView
+        android:id="@id/lblCharacterDetailsStatus"
+        style="@style/Text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:autoSizeTextType="uniform"
+        android:layout_marginTop="0dp"
+        app:autoSizeMinTextSize="@dimen/textSizeCaption"
+        app:autoSizeMaxTextSize="@dimen/textSizeBody1"
+        android:layout_marginStart="@dimen/viewMarginSmall"
+        android:layout_marginEnd="@dimen/screenMargin"
+        app:layout_constraintTop_toTopOf="@id/cpnCharacterDetailsStatus"
+        app:layout_constraintStart_toStartOf="@id/barrierCharacterDetails"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:maxLines="2"
+        tools:text="Presumed dead" />
+
+    <TextView
+        android:id="@id/lblCharacterDetailsNickname"
+        style="@style/Text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:autoSizeTextType="uniform"
+        android:layout_marginTop="0dp"
+        app:autoSizeMinTextSize="@dimen/textSizeCaption"
+        app:autoSizeMaxTextSize="@dimen/textSizeBody1"
+        android:layout_marginStart="@dimen/viewMarginSmall"
+        android:layout_marginEnd="@dimen/screenMargin"
+        app:layout_constraintTop_toTopOf="@id/cpnCharacterDetailsNickName"
+        app:layout_constraintStart_toStartOf="@id/barrierCharacterDetails"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:maxLines="2"
+        tools:text="Heisenberg" />
+
+    <TextView
+        android:id="@+id/lblCharacterDetailsAppearances"
+        style="@style/Text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:autoSizeTextType="uniform"
+        android:layout_marginTop="0dp"
+        app:autoSizeMinTextSize="@dimen/textSizeCaption"
+        app:autoSizeMaxTextSize="@dimen/textSizeBody1"
+        android:layout_marginStart="@dimen/viewMarginSmall"
+        android:layout_marginEnd="@dimen/screenMargin"
+        app:layout_constraintTop_toTopOf="@id/cpnCharacterDetailsAppearance"
+        app:layout_constraintStart_toStartOf="@id/barrierCharacterDetails"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:maxLines="2"
+        tools:text="1,2,3,4,5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

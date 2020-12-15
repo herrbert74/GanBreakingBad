@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<dimen name="listSingleItemHeight">72dp</dimen>
+	<dimen name="listSingleItemDenseHeight">60dp</dimen>
+	<dimen name="listSingleItemWithAvatarHeight">84dp</dimen>
+	<dimen name="listTwoLineHeight">98dp</dimen>
+	<dimen name="listTwoLineDenseHeight">90dp</dimen>
+	<dimen name="listThreeLineHeight">132dp</dimen>
+	<dimen name="listThreeLineDenseHeight">114dp</dimen>
+	<dimen name="listAvatarWidth">60dp</dimen>
+	<dimen name="listSubheadingHeight">72dp</dimen>
+</resources>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/gan_bb"
+	app:startDestination="@id/charactersFragment">
+
+	<fragment
+		android:id="@+id/charactersFragment"
+		android:name="com.babestudios.ganbb.ui.characters.CharactersFragment"
+		android:label="@string/app_name"
+		tools:layout="@layout/fragment_characters">
+		<action
+			android:id="@+id/action_charactersFragment_to_characterDetailsFragment"
+			app:destination="@id/characterDetailsFragment"
+			app:enterAnim="@anim/right_slide_in"
+			app:exitAnim="@anim/left_slide_out"
+			app:popEnterAnim="@anim/left_slide_in"
+			app:popExitAnim="@anim/right_slide_out" />
+	</fragment>
+
+	<fragment
+		android:id="@+id/characterDetailsFragment"
+		android:name="com.babestudios.ganbb.ui.characterdetails.CharacterDetailsFragment"
+		android:label="CharacterDetailsFragment"
+		tools:layout="@layout/fragment_character_details">
+		<argument
+			android:name="id"
+			app:argType="long"
+			android:defaultValue="0L" />
+	</fragment>
+
+</navigation>

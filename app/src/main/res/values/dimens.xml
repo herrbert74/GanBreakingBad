@@ -1,0 +1,25 @@
+<resources>
+	<!-- General dimensions -->
+	<dimen name="screenMargin">16dp</dimen>
+	<dimen name="viewMargin">8dp</dimen>
+	<dimen name="viewMarginLarge">24dp</dimen>
+	<dimen name="viewMarginSmall">4dp</dimen>
+
+	<!-- Buttons -->
+	<dimen name="buttonWidth">200dp</dimen>
+	<dimen name="buttonWidthShort">128dp</dimen>
+	<dimen name="buttonWidthFitTwo">96dp</dimen>
+	<dimen name="buttonHeight">42dp</dimen>
+	<dimen name="buttonSmallHeight">40dp</dimen>
+	<dimen name="buttonCornerRadius">4dp</dimen>
+
+	<!-- Other -->
+	<dimen name="fabSize">56dp</dimen>
+
+	<dimen name="iconSize">24dp</dimen>
+
+	<dimen name="appBarHeight">216dp</dimen>
+
+	<dimen name="avatarSize">44dp</dimen>
+	<dimen name="avatarSizeLarge">120dp</dimen>
+</resources>

@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">GAN Breaking Bad</string>
+    <string name="search">Search</string>
+    <string name="search_menu_filter">Filter</string>
+    <string-array name="season_filter_items">
+        <item>All</item>
+        <item>Season 1</item>
+        <item>Season 2</item>
+        <item>Season 3</item>
+        <item>Season 4</item>
+        <item>Season 5</item>
+    </string-array>
+
+    <string name="characterDetailsName">Name</string>
+    <string name="characterDetailsOccupation">Occupation</string>
+    <string name="characterDetailsStatus">Status</string>
+    <string name="characterDetailsNickName">Nickname</string>
+    <string name="characterDetailsAppearance">Season Appearances</string>
+
+    <string name="no_search_result">Your search did not return any results. Please try another one</string>
+    <string name="reload">Reload</string>
+    <string name="can_t_connect_to_the_server">Can\'t connect to the server.</string>
 </resources>

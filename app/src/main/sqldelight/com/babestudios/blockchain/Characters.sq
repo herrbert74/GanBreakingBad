@@ -1,0 +1,20 @@
+CREATE TABLE IF NOT EXISTS characters (
+      id INTEGER NOT NULL PRIMARY KEY,
+      name TEXT NOT NULL,
+      occupation TEXT NOT NULL,
+      img TEXT NOT NULL,
+      status TEXT NOT NULL,
+      nickName TEXT NOT NULL,
+      appearance TEXT NOT NULL
+);
+
+selectAll:
+SELECT * FROM characters
+ORDER BY id ASC;
+
+insertCharacter:
+INSERT INTO characters(id,name, occupation, img, status, nickName, appearance)
+VALUES (?, ?, ?, ?, ?, ?, ?);
+
+deleteAll:
+DELETE FROM characters;

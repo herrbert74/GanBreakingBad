@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tbCharacters"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/MyThemeOverlay.ActionBar"
+        app:popupTheme="@style/MyThemeOverlay.ActionBar"
+        app:titleTextColor="@android:color/white" />
+
+    <com.babestudios.base.view.MultiStateView
+        android:id="@+id/msvCharacters"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:msv_emptyView="@layout/multi_state_view_empty"
+        app:msv_errorView="@layout/multi_state_view_error"
+        app:msv_loadingView="@layout/multi_state_view_progress"
+        app:msv_viewState="content">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCharacters"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/white"
+            android:clipToPadding="true"
+            android:scrollbars="vertical" />
+
+        <LinearLayout
+            android:id="@+id/llCharactersCannotConnect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@color/colorAccent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <TextView
+                style="@style/Text.H6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/viewMargin"
+                android:layout_marginTop="@dimen/viewMargin"
+                android:layout_marginEnd="@dimen/viewMargin"
+                android:text="@string/can_t_connect_to_the_server"
+                android:textAlignment="center"
+                android:textColor="@android:color/white" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCharactersReload"
+                style="@style/Button.Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/viewMarginSmall"
+                android:layout_marginBottom="@dimen/viewMarginSmall"
+                android:text="@string/reload"
+                android:textSize="@dimen/textSizeH5" />
+        </LinearLayout>
+    </com.babestudios.base.view.MultiStateView>
+
+</LinearLayout>
