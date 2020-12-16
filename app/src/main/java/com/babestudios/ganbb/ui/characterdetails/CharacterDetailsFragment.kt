@@ -57,11 +57,6 @@ class CharacterDetailsFragment : Fragment() {
         _binding = null
     }
 
-    /*override fun orientationChanged() {
-        val activity = requireActivity() as MainActivity
-        viewModel.setNavigator(activity.injectLastFmNavigator())
-    }*/
-
     //endregion
 
     //region render

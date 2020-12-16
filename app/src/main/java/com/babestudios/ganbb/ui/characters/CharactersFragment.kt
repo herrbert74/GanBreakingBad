@@ -65,7 +65,7 @@ class CharactersFragment : Fragment() {
 
     //Menu
     lateinit var searchMenuItem: MenuItem
-    private var filterMenuItem: MenuItem? = null
+    private lateinit var filterMenuItem: MenuItem
     private var lblSearch: TextView? = null
     private var flagDoNotAnimateSearchMenuItem = false
     private lateinit var spinner: Spinner
@@ -130,11 +130,6 @@ class CharactersFragment : Fragment() {
         _binding = null
     }
 
-    /*override fun orientationChanged() {
-        val activity = requireActivity() as LastFmAlbumsActivity
-        viewModel.setNavigator(activity.injectLastFmNavigator())
-    }*/
-
     private fun createSearchRecyclerView() {
         val linearLayoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
@@ -153,8 +148,8 @@ class CharactersFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.search_menu, menu)
-        val item = menu.findItem(R.id.action_filter)
-        setupFilterSpinner(item)
+        filterMenuItem = menu.findItem(R.id.action_filter)
+        setupFilterSpinner(filterMenuItem)
         searchMenuItem = menu.findItem(R.id.action_search)
         val searchView = searchMenuItem.actionView as SearchView
         lblSearch =
@@ -166,12 +161,15 @@ class CharactersFragment : Fragment() {
         )?.onEach {
             ganBbViewModel.onSearchQueryChanged(lblSearch?.text.toString())
         }?.launchIn(lifecycleScope)
+        if(ganBbViewModel.getQuery().isNotEmpty()) {
+
+        }
         searchMenuItem.setOnActionExpandListener(object : MenuItem.OnActionExpandListener {
             override fun onMenuItemActionCollapse(item: MenuItem): Boolean {
                 if (searchMenuItem.isActionViewExpanded) {
                     animateSearchToolbar(1, containsOverflow = false, show = false)
                 }
-                filterMenuItem?.isVisible = false
+                filterMenuItem.isVisible = false
                 searchMenuItem.isVisible = true
                 isSearchMenuItemExpanded = false
                 return true
@@ -188,18 +186,20 @@ class CharactersFragment : Fragment() {
                 return true
             }
         })
+        (filterMenuItem?.actionView as Spinner).setSelection(ganBbViewModel.getFilterSeasonOrdinal())
         //For when invalidateOptionsMenu called
         if (isSearchMenuItemExpanded) {
             searchMenuItem.expandActionView()
-            (searchMenuItem.actionView as SearchView).setQuery(lblSearch?.text, false)
+            (searchMenuItem.actionView as SearchView)
+                .setQuery(ganBbViewModel.getQuery(), false)
             flagDoNotAnimateSearchMenuItem = true
         }
         //For when we are recovering after a process death
-        if (!lblSearch?.text.isNullOrEmpty()) {
+        if (ganBbViewModel.getQuery().isNotEmpty()) {
             Handler(Looper.getMainLooper()).postDelayed({
                 //To avoid skipping initial state in this case : we want to reload it
                 searchMenuItem.expandActionView()
-                lblSearch?.text = lblSearch?.text
+                lblSearch?.text = ganBbViewModel.getQuery()
             }, searchToolbarAnimationDuration)
         }
     }

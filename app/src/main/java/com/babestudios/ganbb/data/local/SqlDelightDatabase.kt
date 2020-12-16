@@ -1,6 +1,6 @@
 package com.babestudios.ganbb.data.local
 
-import com.babestudios.blockchain.CharactersQueries
+import com.babestudios.ganbb.CharactersQueries
 import com.babestudios.ganbb.Database
 import com.babestudios.ganbb.data.network.dto.Status
 import com.babestudios.ganbb.model.Character
