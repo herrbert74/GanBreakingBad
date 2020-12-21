@@ -1,5 +1,6 @@
 package com.babestudios.ganbb
 
+import androidx.lifecycle.SavedStateHandle
 import com.babestudios.ganbb.data.network.GanBbRepositoryContract
 import com.babestudios.ganbb.data.network.characterDtoMapper
 import com.babestudios.ganbb.data.network.dto.CharacterDto
@@ -97,6 +98,7 @@ class GanBbViewModelTest : BaseViewModelTest() {
 		return GanBbViewModel(
 			ganBbRepositoryContract,
 			ganBbNavigator,
+			SavedStateHandle()
 		)
 	}
 }
